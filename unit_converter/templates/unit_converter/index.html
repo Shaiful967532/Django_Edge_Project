@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Converter</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Unit Converter</h1>
+        <form method="post">
+            {% csrf_token %}
+            <label for="number">Enter number:</label>
+            <input type="text" name="number" id="number" required>
+            <br>
+            <label>Conversion Type:</label>
+            <select name="conversion_type">
+                <option value="km_to_miles">Kilometers to Miles</option>
+                <option value="miles_to_km">Miles to Kilometers</option>
+            </select>
+            <br>
+            <input type="submit" value="Convert">
+        </form>
+        {% if result is not None %}
+            <div class="result">
+                <h2>Result: {{ result }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
